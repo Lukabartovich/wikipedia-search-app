@@ -1,0 +1,6 @@
+Name:
+  xpath: '/html/body/div[1]/div/div[3]/main/header/h1/span'
+Text:
+  xpath: '/html/body/div[1]/div/div[3]/main/div[2]/div[3]/div[1]/p[2]'
+MoreInfo:
+  xpath: '/html/body/div[1]/div/div[3]/main/div[2]/div[3]/div[1]/p[3]'
