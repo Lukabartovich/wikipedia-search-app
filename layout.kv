@@ -1,0 +1,217 @@
+<Start>:
+    GridLayout:
+        cols: 1
+
+        padding: 30
+        spacing: 10
+
+        Image:
+            source: 'files/logo.png'
+            size_hint_y: 0.95
+        Button:
+            background_color: (0, 1, 0, 1)
+            text: 'start'
+            size_hint_y: 0.05
+            on_press: root.start()
+
+<LogIn>:
+    GridLayout:
+        cols: 1
+
+        padding: 10
+        spacing: 10
+
+        TextInput:
+            id: name
+            text: 'name'
+            foreground_color: (0, 0.85, 0.27, 1)
+
+        TextInput:
+            id: password
+            text: 'password'
+            foreground_color: (0, 0.85, 0.27, 1)
+
+        Label:
+            text: ''
+
+        Button:
+            text: 'log in'
+            background_color: (0, 0.15, 1, 1)
+
+            on_press: root.log_in()
+
+        Button:
+            text: 'create account'
+            background_color: (0, 1, 0.15, 1)
+
+            on_press: root.create_account()
+
+<Home>:
+    GridLayout:
+        cols: 1
+
+        GridLayout:
+            cols: 2
+            size_hint_y: 0.08
+
+            Label:
+                text:
+                size_hint_x: 0.9
+            Button:
+                size_hint_x: 0.1
+                background_normal: 'files/dots.png'
+                on_press: root.dots()
+
+        Image:
+            id: logo
+            source: 'files/logo.png'
+            size_hint_y: 0.8
+
+        GridLayout:
+
+            spacing: 20
+            padding: 10
+
+            cols: 3
+            size_hint_y: 0.12
+
+            TextInput:
+                id: input
+                size_hint_x: 0.78
+
+            Button:
+                size_hint_x: 0.12
+                background_normal: 'files/glass.png'
+                on_press: root.glass()
+
+            Button:
+                id: mic
+                size_hint_x: 0.1
+                background_normal: 'files/mic1.png'
+                on_press: root.mic()
+
+<Result>:
+    GridLayout:
+        cols: 1
+        spacing: 10
+        padding: 10
+
+        Label:
+            id: result
+            text: 'blabla'
+            font_size: 13
+            color: (0, 0, 0, 1)
+            size_hint_y: 0.95
+
+        Button:
+            text: 'back'
+            background_color: (0, 1, 0.15, 1)
+            on_press: root.back()
+            size_hint_y: 0.05
+
+<History>:
+    GridLayout:
+        cols: 1
+
+        padding: 25
+        spacing: 25
+
+        Button:
+            id: b1
+            text: ''
+            on_press: root.b1_press()
+            background_color: (0, 1, 0.15, 1)
+
+            size_hint_y: 1.8
+
+        Button:
+            id: b2
+            text: ''
+            on_press: root.b2_press()
+            background_color: (0, 1, 0.15, 1)
+            size_hint_y: 1.8
+
+        Button:
+            id: b3
+            text: ''
+            on_press: root.b3_press()
+            background_color: (0, 1, 0.15, 1)
+            size_hint_y: 1.8
+
+        Button:
+            id: b4
+            text: ''
+            on_press: root.b4_press()
+            background_color: (0, 1, 0.15, 1)
+            size_hint_y: 1.8
+
+
+        Button:
+            id: b5
+            text: ''
+            on_press: root.b5_press()
+            background_color: (0, 1, 0.15, 1)
+            size_hint_y: 1.8
+
+        GridLayout:
+            size_hint_y: 1
+            cols: 2
+
+            spacing: 5
+
+            Button:
+                text: 'back'
+                on_press: root.back()
+
+            Button:
+                text: 'clear'
+                on_press: root.clear()
+                background_color: (1, 0, 0, 1)
+
+<Dots>:
+    GridLayout:
+        cols: 1
+
+        padding: 30
+        spacing: 30
+
+        Button:
+            text: 'history'
+            background_color: (0, 1, 0.15, 1)
+            on_press: root.history()
+
+        Button:
+            text: 'back'
+            on_press: root.back()
+
+<Root>:
+    canvas.before:
+        Color:
+            rgb: 0,252,227
+        Rectangle:
+            size: self.size
+            pos: self.pos
+
+    Start:
+        id: start
+        name: 'start'
+
+    LogIn:
+        id: log_in
+        name: 'log_in'
+
+    Home:
+        id: home
+        name: 'home'
+
+    Result:
+        id: result
+        name: 'result'
+
+    Dots:
+        id: dots
+        name: 'dots'
+
+    History:
+        id: history
+        name: 'history'

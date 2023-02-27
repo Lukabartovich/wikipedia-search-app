@@ -3,8 +3,8 @@ from StringSort import StringSort
 
 class DataBase:
 
-    def __init__(self):
-        self.database = 'files/database.db'
+    def __init__(self, database):
+        self.database = database
 
         self.connection = sqlite3.connect(self.database)
         self.cursor = self.connection.cursor()
@@ -111,17 +111,4 @@ class DataBase:
 
             self.connection.commit()
 
-    def update_number(self, what, name):
-        d1 = self.get_number(1, name)
-        d2 = self.get_number(2, name)
-        d3 = self.get_number(3, name)
-        d4 = self.get_number(4, name)
-
-        self.update(1, name, what)
-        self.update(2, name, d1)
-        self.update(3, name, d2)
-        self.update(4, name, d3)
-        self.update(5, name, d4)
-
-# db = DataBase('database.db')
-# db.update_number('4', 'luka')
+db = DataBase('database.db')
