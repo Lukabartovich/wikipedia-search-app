@@ -4,3 +4,5 @@ pip install selectorlib
 pip install StringSort
 pip install SpeechRecognitionCover
 pip install kivy
+pip install wikiapi
+pip install wget

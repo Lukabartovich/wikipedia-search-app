@@ -1,16 +1,20 @@
-import time
-
 from kivy.app import App
 from kivy.uix.screenmanager import ScreenManager, Screen
 from kivy.core.window import Window
 from kivy.lang import Builder
 
 
+import os
+
+
 from SpeechRecognitionCover import Cover
 
 
-from files.DataBase_class import DataBase
-from files.scrap import getting_data
+from DataBase_class import DataBase
+from scrap import getting_data
+
+from Getting_Images import getWikiImage, shutil_getting
+
 
 
 Window.size = (500, 600)
@@ -67,7 +71,7 @@ class Home(Screen):
             print(self.text)
             self.ids.input.text = ''
 
-            self.result_text = getting_data(self.text, 70)[1]
+            self.result_text = list(getting_data(self.text, 70))[1]
 
             with open('files/name.txt', 'r+') as file:
                 name = file.read()
@@ -106,6 +110,36 @@ class Home(Screen):
 class Result(Screen):
     def back(self):
         self.manager.current = 'home'
+
+    def images(self):
+        if str(self.ids.result.text) != 'None':
+            with open('files/name.txt', 'r+') as file:
+                name = file.read()
+
+            db = DataBase()
+
+            self.result_input = db.get_number('1', name)
+            print(self.result_input)
+
+            path = str(getWikiImage(self.result_input))
+            print(path)
+
+            os.chdir('C:\\Users\\Calva\\PycharmProjects\\facts\\images')
+
+            real_image_pat = shutil_getting(path)
+            os.chdir('C:\\Users\\Calva\\PycharmProjects\\facts')
+
+            if real_image_pat != None:
+                real_image_path = 'images/' + real_image_pat
+
+                try:
+                    self.manager.current = 'images'
+                    self.manager.current_screen.ids.img.source = str(real_image_path)
+                except:
+                    self.manager.current = 'images'
+                    self.manager.current_screen.ids.img.source = 'files/no_image.png'
+            else:
+                self.manager.current = 'home'
 
 
 class Dots(Screen):
@@ -213,6 +247,9 @@ class History(Screen):
 
         self.result_text = getting_data(self.text, 70)[1]
 
+        with open('files/name.txt', 'r+') as file:
+            name = file.read()
+
         db = DataBase()
         db.update_number(self.text, str(name))
 
@@ -231,6 +268,11 @@ class History(Screen):
         for i in range(5):
             db.update_number('None', str(name))
 
+        self.manager.current = 'home'
+
+
+class Images(Screen):
+    def back(self):
         self.manager.current = 'home'
 
 class Root(ScreenManager):

@@ -96,12 +96,26 @@
         spacing: 10
         padding: 10
 
+        GridLayout:
+
+            size_hint_y: 0.1
+            cols: 2
+
+            Label:
+                text: ''
+                size_hint_x: 0.89
+
+            Button:
+                size_hint_x: 0.11
+                background_normal: 'files/images.png'
+                on_press: root.images()
+
         Label:
             id: result
             text: 'blabla'
             font_size: 13
             color: (0, 0, 0, 1)
-            size_hint_y: 0.95
+            size_hint_y: 0.85
 
         Button:
             text: 'back'
@@ -184,6 +198,23 @@
             text: 'back'
             on_press: root.back()
 
+<Images>:
+    GridLayout:
+        cols: 1
+        spacing: 10
+        padding: 10
+
+        Image:
+            id: img
+            source: ''
+            size_hint_y: 0.95
+
+        Button:
+            text: 'back'
+            background_color: (0, 1, 0.15, 1)
+            on_press: root.back()
+            size_hint_y: 0.05
+
 <Root>:
     canvas.before:
         Color:
@@ -215,3 +246,7 @@
     History:
         id: history
         name: 'history'
+
+    Images:
+        id: images
+        name: 'images'
