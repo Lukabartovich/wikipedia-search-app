@@ -6,3 +6,4 @@ To install all libraris (on windows) run ".\files/setup.bat" in the terminal, or
     pip install StringSort
     pip install SpeechRecognitionCover
     pip install kivy
+    pip install wikiapi
