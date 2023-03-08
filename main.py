@@ -189,6 +189,7 @@ class Result(Screen):
                         self.manager.current_screen.ids.img.source = str(real_image_path)
                     else:
                         self.manager.current = 'images'
+                        self.manager.current_screen.ids.back.text = 'back'
                         self.manager.current_screen.ids.img.source = str(real_image_path)
                 except:
                     self.manager.current = 'images'
@@ -215,7 +216,6 @@ class Dots(Screen):
             self.manager.current = 'lang'
 
 
-
     def history(self):
         db = DataBase()
         with open('files/name.txt', 'r+') as file:
@@ -229,6 +229,11 @@ class Dots(Screen):
 
             self.manager.current_screen.ids.back.text = 'назад'
             self.manager.current_screen.ids.clear_l.text = 'очистить'
+        if lang == 'en':
+            print('history ru')
+
+            self.manager.current_screen.ids.back.text = 'back'
+            self.manager.current_screen.ids.clear_l.text = 'clear'
 
 
         if db.get_number(1, name) != 'None':

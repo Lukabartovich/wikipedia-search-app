@@ -1,3 +1,4 @@
+import wget
 from wikiapi import WikiApi
 from translate import Translator
 import requests
@@ -40,4 +41,5 @@ def shutil_getting(path):
 
         return filename
     else:
-        print('Image Couldn\'t be retreived')
+        name = wget.download(image_url, 'images')
+        return name
