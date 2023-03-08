@@ -4,3 +4,11 @@ Text:
   xpath: '/html/body/div[1]/div/div[3]/main/div[2]/div[3]/div[1]/p[2]'
 MoreInfo:
   xpath: '/html/body/div[1]/div/div[3]/main/div[2]/div[3]/div[1]/p[3]'
+NameRu:
+  xpath: '/html/body/div[3]/h1'
+TextRu:
+  xpath: '/html/body/div[3]/div[3]/div[5]/div[1]/p[1]'
+MoreInfoRu:
+  xpath: '/html/body/div[3]/div[3]/div[5]/div[1]/p[2]'
+ImagesRU:
+  xpath: '/html/body/div[3]/div[3]/div[5]/div[1]/div[2]/div/a/img'

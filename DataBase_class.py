@@ -6,7 +6,7 @@ class DataBase:
     def __init__(self):
         self.database = 'files/database.db'
 
-        self.connection = sqlite3.connect(self.database)
+        self.connection = sqlite3.connect('files/database.db')
         self.cursor = self.connection.cursor()
 
     def new_account(self, name, password):
@@ -15,8 +15,8 @@ class DataBase:
 
         self.connection.execute("""
             INSERT INTO "Signs" VALUES
-                (?, NULL, NULL, NULL, NULL, NULL, ?)
-        """, [self.name, self.password])
+                (?, NULL, NULL, NULL, NULL, NULL, ?, ?)
+        """, [self.name, self.password, 'en'])
 
         self.connection.commit()
 
@@ -123,5 +123,25 @@ class DataBase:
         self.update(4, name, d3)
         self.update(5, name, d4)
 
-# db = DataBase('database.db')
-# db.update_number('4', 'luka')
+    def get_lang(self, name):
+        self.cursor.execute("""
+            SELECT "lang" FROM "Signs" WHERE "name" = ?
+                            """, [str(name)])
+        self.info = self.cursor.fetchall()
+        s = StringSort(str(self.info))
+        return s.delete("[(',)]")
+
+    def update_lang(self, name, lang):
+        self.connection.execute("""
+                                UPDATE "Signs" set "lang" = ? WHERE "name" = ?
+                            """, [str(lang), str(name)])
+
+        self.connection.commit()
+
+
+
+
+# db = DataBase()
+# print(db.get_lang('luka'))
+# db.update_lang('luka', 'en')
+# print(db.get_lang('luka'))

@@ -118,6 +118,7 @@
             size_hint_y: 0.85
 
         Button:
+            id: back
             text: 'back'
             background_color: (0, 1, 0.15, 1)
             on_press: root.back()
@@ -174,10 +175,12 @@
             spacing: 5
 
             Button:
+                id: back
                 text: 'back'
                 on_press: root.back()
 
             Button:
+                id: clear_l
                 text: 'clear'
                 on_press: root.clear()
                 background_color: (1, 0, 0, 1)
@@ -190,13 +193,24 @@
         spacing: 30
 
         Button:
+            id: history
             text: 'history'
             background_color: (0, 1, 0.15, 1)
             on_press: root.history()
+            size_hint_y: 0.45
 
         Button:
+            id: lang
+            text: 'language'
+            background_color: (0, 0.15, 1, 1)
+            on_press: root.lang()
+            size_hint_y: 0.45
+
+        Button:
+            id: back
             text: 'back'
             on_press: root.back()
+            size_hint_y: 0.1
 
 <Images>:
     GridLayout:
@@ -210,10 +224,38 @@
             size_hint_y: 0.95
 
         Button:
+            id: back
             text: 'back'
             background_color: (0, 1, 0.15, 1)
             on_press: root.back()
             size_hint_y: 0.05
+
+<Lang>:
+    GridLayout:
+        cols: 1
+
+        padding: 30
+        spacing: 30
+
+        Button:
+            id: ru
+            text: 'ru'
+            background_color: (0, 1, 0.15, 1)
+            on_press: root.Ru()
+            size_hint_y: 0.45
+
+        Button:
+            id: en
+            text: 'en'
+            background_color: (0, 1, 0.15, 1)
+            on_press: root.En()
+            size_hint_y: 0.45
+
+        Button:
+            id: back
+            text: 'back'
+            on_press: root.back()
+            size_hint_y: 0.1
 
 <Root>:
     canvas.before:
@@ -250,3 +292,7 @@
     Images:
         id: images
         name: 'images'
+
+    Lang:
+        id: lang
+        name: 'lang'
