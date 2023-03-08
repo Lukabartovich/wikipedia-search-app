@@ -3,6 +3,8 @@ from translate import Translator
 
 import requests
 
+from time import strftime
+
 import urllib.request
 
 wiki = WikiApi()
@@ -25,7 +27,7 @@ def getWikiImage(entity, lang):
 
 def download(path):
     ex = path[-4:]
-    link = 'images/image' + str(ex)
+    link = f'images/image_{strftime("%Y%Y%m%d-%H%M%S")}' + str(ex)
     urllib.request.urlretrieve(path, link)
 
     return link

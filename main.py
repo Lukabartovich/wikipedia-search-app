@@ -1,4 +1,5 @@
 import time
+from time import strftime
 
 from kivy.app import App
 from kivy.uix.screenmanager import ScreenManager, Screen
@@ -177,6 +178,7 @@ class Result(Screen):
             # os.chdir('C:\\Users\\Calva\\PycharmProjects\\facts')
             real_image_pat = download(path)
             time.sleep(1.1)
+
 
             if real_image_pat != None:
 
