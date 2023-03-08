@@ -1,9 +1,9 @@
-import wget
 from wikiapi import WikiApi
 from translate import Translator
-import requests
-import shutil
 
+import requests
+
+import urllib.request
 
 wiki = WikiApi()
 
@@ -23,23 +23,9 @@ def getWikiImage(entity, lang):
             article = wiki.get_article(results[0])
             return article.image
 
-def shutil_getting(path):
-    image_url = path
-    filename = image_url.split("/")[-1]
+def download(path):
+    ex = path[-4:]
+    link = 'images/image' + str(ex)
+    urllib.request.urlretrieve(path, link)
 
-    r = requests.get(image_url, stream=True)
-
-    if r.status_code == 200:
-        r.raw.decode_content = True
-
-
-        with open(filename, 'wb') as f:
-            shutil.copyfileobj(r.raw, f)
-
-
-        print('Image sucessfully Downloaded: ', filename)
-
-        return filename
-    else:
-        name = wget.download(image_url, 'images/')
-        return name
+    return link

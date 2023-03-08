@@ -86,3 +86,15 @@ def getting_data(what, split, lang):
             list1.append(name)
             list1.append(s7)
             return list1
+
+def get_images(what):
+    path = f'https://www.google.com/search?q=' + what + '&sxsrf=AJOqlzV4_4Ty7Nw8nJDPRuJvFC-P8G72Xg:1678306870289&source=lnms&tbm=isch&sa=X&ved=2ahUKEwiP7c6mlM39AhX-57sIHaJjBzkQ_AUoAXoECAEQAw&biw=1350&bih=635&dpr=1'
+
+    source = requests.get(path).text
+
+    resource = Extractor.from_yaml_file('files/paths.yaml')
+    reresource = resource.extract(source)
+
+    link_for_image = reresource['ImagesEn']
+
+    return link_for_image

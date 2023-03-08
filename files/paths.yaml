@@ -10,5 +10,3 @@ TextRu:
   xpath: '/html/body/div[3]/div[3]/div[5]/div[1]/p[1]'
 MoreInfoRu:
   xpath: '/html/body/div[3]/div[3]/div[5]/div[1]/p[2]'
-ImagesRU:
-  xpath: '/html/body/div[3]/div[3]/div[5]/div[1]/div[2]/div/a/img'

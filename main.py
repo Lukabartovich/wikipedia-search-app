@@ -1,3 +1,5 @@
+import time
+
 from kivy.app import App
 from kivy.uix.screenmanager import ScreenManager, Screen
 from kivy.core.window import Window
@@ -11,7 +13,7 @@ from SpeechRecognitionCover import Cover
 from DataBase_class import DataBase
 from scrap import getting_data
 
-from Getting_Images import getWikiImage, shutil_getting
+from Getting_Images import getWikiImage, download
 
 
 
@@ -171,13 +173,12 @@ class Result(Screen):
             path = str(getWikiImage(self.result_input, lang))
             print(path)
 
-            os.chdir('C:\\Users\\Calva\\PycharmProjects\\facts\\images')
-
-            real_image_pat = shutil_getting(path)
-            os.chdir('C:\\Users\\Calva\\PycharmProjects\\facts')
+            # os.chdir('C:\\Users\\Calva\\PycharmProjects\\facts\\images')
+            # os.chdir('C:\\Users\\Calva\\PycharmProjects\\facts')
+            real_image_pat = download(path)
+            time.sleep(1.1)
 
             if real_image_pat != None:
-                real_image_path = 'images/' + real_image_pat
 
                 try:
                     with open('files/name.txt', 'r+') as file:
@@ -189,11 +190,11 @@ class Result(Screen):
                     if lang == 'ru':
                         self.manager.current = 'images'
                         self.manager.current_screen.ids.back.text = 'назад'
-                        self.manager.current_screen.ids.img.source = str(real_image_path)
+                        self.manager.current_screen.ids.img.source = str(real_image_pat)
                     else:
                         self.manager.current = 'images'
                         self.manager.current_screen.ids.back.text = 'back'
-                        self.manager.current_screen.ids.img.source = str(real_image_path)
+                        self.manager.current_screen.ids.img.source = str(real_image_pat)
                 except:
                     self.manager.current = 'images'
                     self.manager.current_screen.ids.img.source = 'files/no_image.png'
@@ -423,7 +424,6 @@ class Lang(Screen):
 
     def back(self):
         self.manager.current = 'home'
-
 
 
 class Root(ScreenManager):
