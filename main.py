@@ -86,9 +86,10 @@ class Home(Screen):
                 self.manager.current = 'result'
                 self.manager.current_screen.ids.result.text = self.result_text
                 self.manager.current_screen.ids.back.text = 'назад'
-            else:
+            if lang == 'en':
                 self.manager.current = 'result'
                 self.manager.current_screen.ids.result.text = self.result_text
+                self.manager.current_screen.ids.back.text = 'back'
 
     def mic(self):
         with open('files/name.txt', 'r+') as file:
@@ -110,6 +111,7 @@ class Home(Screen):
 
             self.manager.current = 'result'
             self.manager.current_screen.ids.result.text = self.result_text
+            self.manager.current_screen.ids.back.text = 'back'
         if lang == 'ru':
             c = Cover('ru')
             print('talk')
@@ -123,6 +125,7 @@ class Home(Screen):
 
             self.manager.current = 'result'
             self.manager.current_screen.ids.result.text = self.result_text
+            self.manager.current_screen.ids.back.text = 'назад'
 
     def dots(self):
         with open('files/name.txt', 'r+') as file:
@@ -215,7 +218,6 @@ class Dots(Screen):
         else:
             self.manager.current = 'lang'
 
-
     def history(self):
         db = DataBase()
         with open('files/name.txt', 'r+') as file:
@@ -274,9 +276,14 @@ class History(Screen):
         self.result_text = getting_data(self.text, 70, lang)[1]
 
         db.update_number(self.text, str(name))
-
-        self.manager.current = 'result'
-        self.manager.current_screen.ids.result.text = self.result_text
+        if lang == 'ru':
+            self.manager.current = 'result'
+            self.manager.current_screen.ids.result.text = self.result_text
+            self.manager.current_screen.ids.back.text = 'назад'
+        if lang == 'en':
+            self.manager.current = 'result'
+            self.manager.current_screen.ids.result.text = self.result_text
+            self.manager.current_screen.ids.back.text = 'back'
 
     def b2_press(self):
         self.text = self.ids.b2.text
@@ -292,9 +299,14 @@ class History(Screen):
         self.result_text = getting_data(self.text, 70, lang)[1]
 
         db.update_number(self.text, str(name))
-
-        self.manager.current = 'result'
-        self.manager.current_screen.ids.result.text = self.result_text
+        if lang == 'ru':
+            self.manager.current = 'result'
+            self.manager.current_screen.ids.result.text = self.result_text
+            self.manager.current_screen.ids.back.text = 'назад'
+        if lang == 'en':
+            self.manager.current = 'result'
+            self.manager.current_screen.ids.result.text = self.result_text
+            self.manager.current_screen.ids.back.text = 'back'
 
     def b3_press(self):
         self.text = self.ids.b3.text
@@ -311,8 +323,14 @@ class History(Screen):
 
         db.update_number(self.text, str(name))
 
-        self.manager.current = 'result'
-        self.manager.current_screen.ids.result.text = self.result_text
+        if lang == 'ru':
+            self.manager.current = 'result'
+            self.manager.current_screen.ids.result.text = self.result_text
+            self.manager.current_screen.ids.back.text = 'назад'
+        if lang == 'en':
+            self.manager.current = 'result'
+            self.manager.current_screen.ids.result.text = self.result_text
+            self.manager.current_screen.ids.back.text = 'back'
 
     def b4_press(self):
         self.text = self.ids.b4.text
@@ -329,8 +347,14 @@ class History(Screen):
 
         db.update_number(self.text, str(name))
 
-        self.manager.current = 'result'
-        self.manager.current_screen.ids.result.text = self.result_text
+        if lang == 'ru':
+            self.manager.current = 'result'
+            self.manager.current_screen.ids.result.text = self.result_text
+            self.manager.current_screen.ids.back.text = 'назад'
+        if lang == 'en':
+            self.manager.current = 'result'
+            self.manager.current_screen.ids.result.text = self.result_text
+            self.manager.current_screen.ids.back.text = 'back'
 
     def b5_press(self):
         with open('files/name.txt', 'r+') as file:
@@ -350,9 +374,14 @@ class History(Screen):
 
         db = DataBase()
         db.update_number(self.text, str(name))
-
-        self.manager.current = 'result'
-        self.manager.current_screen.ids.result.text = self.result_text
+        if lang == 'ru':
+            self.manager.current = 'result'
+            self.manager.current_screen.ids.result.text = self.result_text
+            self.manager.current_screen.ids.back.text = 'назад'
+        if lang == 'en':
+            self.manager.current = 'result'
+            self.manager.current_screen.ids.result.text = self.result_text
+            self.manager.current_screen.ids.back.text = 'back'
 
     def back(self):
         self.manager.current = 'home'

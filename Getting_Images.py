@@ -41,5 +41,5 @@ def shutil_getting(path):
 
         return filename
     else:
-        name = wget.download(image_url, 'images')
+        name = wget.download(image_url, 'images/')
         return name
